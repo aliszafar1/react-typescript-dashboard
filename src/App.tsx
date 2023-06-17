@@ -1,10 +1,27 @@
-import "./styles.css";
+import SideMenu from "./sidemenu";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { ColorModeContext, useMode } from "./theme";
 
-export default function App() {
+import AppRoutes from "./routes";
+function App() {
+  const [theme, colorMode] = useMode();
+
   return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
-    </div>
+    //@ts-ignore
+    <ColorModeContext.Provider value={colorMode}>
+      {/* @ts-ignore */}
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <div className="app">
+          <main className="content">
+            {/* <Topbar setIsSidebar={setIsSidebar} /> */}
+            <SideMenu />
+            <AppRoutes />
+          </main>
+        </div>
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   );
 }
+
+export default App;
