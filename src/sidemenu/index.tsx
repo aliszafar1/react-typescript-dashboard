@@ -1,7 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, Path } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
@@ -12,10 +12,18 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import { PATH } from "../routes";
 import { tokens } from "../theme";
 
-const USER_AVATAR = "https://www.pngmart.com/files/22/User-Avatar-Profile-PNG-Isolated-Transparent-Picture.png";
+const USER_AVATAR =
+  "https://www.pngmart.com/files/22/User-Avatar-Profile-PNG-Isolated-Transparent-Picture.png";
 
-// @ts-ignore
-const Item = ({ title, to, icon, selected, setSelected }) => {
+type Item = {
+  title: string;
+  to: string | Partial<Path>;
+  icon: React.ReactNode;
+  selected: string;
+  setSelected: (s: string) => void;
+};
+
+const Item = ({ title, to, icon, selected, setSelected }: Item) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   return (

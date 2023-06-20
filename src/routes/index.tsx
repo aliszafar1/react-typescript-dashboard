@@ -25,10 +25,11 @@ const ROUTES = [
 const AppRoutes = () => {
   return (
     <Routes>
-      {ROUTES.map((route) => {
+      {ROUTES.map((route, key) => {
         const { path, component } = route;
         return (
           <Route
+            key={key}
             path={path}
             element={
               <React.Suspense fallback={<Common.FallBack />}>
