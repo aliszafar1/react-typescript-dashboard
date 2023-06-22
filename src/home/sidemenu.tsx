@@ -13,7 +13,7 @@ import { PATH } from "../routes";
 import { tokens } from "../theme";
 
 const USER_AVATAR =
-  "https://www.pngmart.com/files/22/User-Avatar-Profile-PNG-Isolated-Transparent-Picture.png";
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqCM2uBH9REO_jpNPIeGUgzQ6qSxhU4FpuMDv0GiU&s";
 
 type Item = {
   title: string;
@@ -100,10 +100,13 @@ const SideMenu = () => {
               <Box display="flex" justifyContent="center" alignItems="center">
                 <img
                   alt="profile-user"
-                  width="100px"
-                  height="100px"
                   src={USER_AVATAR}
-                  style={{ cursor: "pointer", borderRadius: "50%" }}
+                  style={{
+                    cursor: "pointer",
+                    borderRadius: "50%",
+                    height: 100,
+                    width: 100,
+                  }}
                 />
               </Box>
               <Box textAlign="center">
