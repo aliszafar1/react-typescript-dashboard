@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import * as Common from "./common";
+import { Box } from "@mui/material";
 
 const Dashboard = React.lazy(() => import("../pages/dashboard"));
 const Contacts = React.lazy(() => import("../pages/contacts"));
@@ -24,23 +25,29 @@ const ROUTES = [
 
 const AppRoutes = () => {
   return (
-    <Routes>
-      {ROUTES.map((route, key) => {
-        const { path, component } = route;
-        return (
-          <Route
-            key={key}
-            path={path}
-            element={
-              <React.Suspense fallback={<Common.FallBack />}>
-                {component}
-              </React.Suspense>
-            }
-          />
-        );
-      })}
-      <Route path={PATH.NOT_FOUND} element={<Common.NoMatch />} />
-    </Routes>
+    <Box
+      sx={{
+        overflow: "auto",
+      }}
+    >
+      <Routes>
+        {ROUTES.map((route, key) => {
+          const { path, component } = route;
+          return (
+            <Route
+              key={key}
+              path={path}
+              element={
+                <React.Suspense fallback={<Common.FallBack />}>
+                  {component}
+                </React.Suspense>
+              }
+            />
+          );
+        })}
+        <Route path={PATH.NOT_FOUND} element={<Common.NoMatch />} />
+      </Routes>
+    </Box>
   );
 };
 
