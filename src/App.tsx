@@ -1,10 +1,25 @@
-import "./styles.css";
+import React from "react";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { ColorModeContext, useMode } from "./theme";
 
-export default function App() {
+import "./styles.css";
+import Home from "./home";
+
+function App() {
+  const [theme, colorMode] = useMode();
+
   return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
-    </div>
+    <>
+      {/* @ts-ignore */}
+      <ColorModeContext.Provider value={colorMode}>
+        {/* @ts-ignore */}
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Home />
+        </ThemeProvider>
+      </ColorModeContext.Provider>
+    </>
   );
 }
+
+export default App;
