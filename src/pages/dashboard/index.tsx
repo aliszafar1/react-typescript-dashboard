@@ -13,6 +13,7 @@ import GeographyChart from "./geogrpahyChart";
 import StatBox from "./statBox";
 import ProgressCircle from "./progressCircle";
 import BarChart from "./barChart";
+import CreatePDF from "../../services/CreatePDF";
 
 const Dashboard = () => {
   const theme = useTheme();
@@ -33,6 +34,13 @@ const Dashboard = () => {
               fontWeight: "bold",
               padding: "10px 20px",
             }}
+            onClick={() =>
+              CreatePDF({
+                id: "dashboardView",
+                filename: "MyDashboard",
+                mode: "l",
+              })
+            }
           >
             <DownloadOutlinedIcon sx={{ mr: "10px" }} />
             Download Reports
@@ -46,6 +54,7 @@ const Dashboard = () => {
         gridTemplateColumns="repeat(12, 1fr)"
         gridAutoRows="140px"
         gap="20px"
+        id="dashboardView"
       >
         {/* ROW 1 */}
         <Box
